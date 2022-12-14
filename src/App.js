@@ -38,7 +38,7 @@ function App() {
             <Route path="contact" element={<Contact />} />
             <Route path="contact/confirmation" element={<SubmitConfirm />} />
             <Route path="*" element={<Error />} />
-            <Route path="loader" element={<Loader />} />
+            <Route path="loader" element={<Loader />} /> 
           </Routes>
         </ScrollToTop>
       </Suspense>
