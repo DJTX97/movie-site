@@ -47,13 +47,13 @@ const Header = () => {
         <nav className="hidden md:flex flex-row-reverse md:flex-row items-center">
           <ul className="flex space-x-5">
             <li className="p-3 font-bold hover:bg-gray-700 transition-color duration-200">
-              <Link to="home">Home</Link>
+              <Link to="/home">Home</Link>
             </li>
             <li className="p-3 font-bold hover:bg-gray-700 transition-color duration-200">
-              <Link to="library">Library</Link>
+              <Link to="/library">Library</Link>
             </li>
             <li className="p-3 font-bold hover:bg-gray-700 transition-color duration-200">
-              <Link to="contact">Contact</Link>
+              <Link to="/contact">Contact</Link>
             </li>
           </ul>
         </nav>
