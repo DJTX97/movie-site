@@ -68,7 +68,7 @@ const Header = () => {
         <GiHamburgerMenu size={70} color="white" className="p-1 mx-3 cursor-pointer" />
       </button>
 
-      {active && <MobileMenu showMobile={showMobile} />}
+      {active && <MobileMenu showMobile={showMobile} active={active} />}
     </div>
   );
 };

@@ -11,15 +11,33 @@ const MobileMenu = ({ showMobile }) => {
 
   const touchHome = () => {
     setTouchedHome(!touchedHome);
+    // showMobile()
   };
 
   const touchLibrary = () => {
     setTouchedLibrary(!touchedLibrary);
+    // showMobile()
   };
 
   const touchContact = () => {
     setTouchedContact(!touchedContact);
+    // showMobile()
   };
+
+  // const handleTouchHome = () => {
+  //   touchHome()
+  //   showMobile()
+  // }
+
+  // const handleTouchLibrary = () => {
+  //   touchLibrary()
+  //   showMobile()
+  // }
+
+  // const handleTouchContact = () => {
+  //   touchContact()
+  //   showMobile()
+  // }
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -30,7 +48,10 @@ const MobileMenu = ({ showMobile }) => {
 
     return () => {
       clearInterval(interval);
-      console.log(`Home: ${touchedHome}, Library: ${touchedLibrary}, Contact: ${touchedContact}`)
+
+      // console.log(
+      //   `Home: ${touchedHome}, Library: ${touchedLibrary}, Contact: ${touchedContact}`
+      // );
     };
   }, [touchedHome, touchedLibrary, touchedContact]);
 
@@ -45,27 +66,23 @@ const MobileMenu = ({ showMobile }) => {
       className={`flex flex-col items-center fixed top-0 right-0 h-screen md:hidden bg-black/50`}
     >
       <nav className="flex flex-col gap-5 items-center">
-        <button className="px-4 hover:bg-red-800">
-          <AiOutlineClose
-            size={80}
-            color="white"
-            className="p-5"
-            onClick={showMobile}
-          />
+        <button className={`px-4 hover:bg-red-800`} onClick={showMobile}>
+          <AiOutlineClose size={80} color="white" className="p-5" />
         </button>
 
         <ul className="flex flex-col gap-3 w-full text-white text-xl uppercase items-center">
           <li
             className="w-full flex text-center"
             // onClick={showMobile}
-            onTouchStart={touchHome}
-            onTouchEnd={showMobile}
+            // onTouchStart={touchHome}
+            // onTouchEnd={showMobile}
           >
             <Link
               className={`w-full py-4 hover:bg-red-800 ${
                 touchedHome === true && "bg-red-800"
               }`}
               to="/"
+              onClick={touchHome}
             >
               Home
             </Link>
@@ -73,14 +90,15 @@ const MobileMenu = ({ showMobile }) => {
           <li
             className="w-full flex text-center"
             // onClick={showMobile}
-            onTouchStart={touchLibrary}
-            onTouchEnd={showMobile}
+            // onTouchStart={touchLibrary}
+            // onTouchEnd={showMobile}
           >
             <Link
               className={`w-full py-4 hover:bg-red-800 ${
                 touchedLibrary === true && "bg-red-800"
               }`}
               to="/library"
+              onClick={touchLibrary}
             >
               Library
             </Link>
@@ -88,14 +106,15 @@ const MobileMenu = ({ showMobile }) => {
           <li
             className="w-full flex text-center"
             // onClick={showMobile}
-            onTouchStart={touchContact}
-            onTouchEnd={showMobile}
+            // onTouchStart={touchContact}
+            // onTouchEnd={showMobile}
           >
             <Link
               className={`w-full py-4 hover:bg-red-800 ${
                 touchedContact === true && "bg-red-800"
               }`}
               to="/contact"
+              onClick={touchContact}
             >
               Contact
             </Link>
