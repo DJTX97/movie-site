@@ -32,7 +32,7 @@ function App() {
       <Suspense fallback={<Loader />}>
         <ScrollToTop>
           <Routes>
-            <Route exact path="/home" element={<Home />} />
+            <Route exact path="/" element={<Home />} />
             <Route path="/library" element={<Library />} />
             <Route path="/library/movie" element={<Movie />} />
             <Route path="/contact" element={<Contact />} />

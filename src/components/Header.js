@@ -47,7 +47,7 @@ const Header = () => {
         <nav className="hidden md:flex flex-row-reverse md:flex-row items-center">
           <ul className="flex space-x-5">
             <li className="p-3 font-bold hover:bg-gray-700 transition-color duration-200">
-              <Link to="/home">Home</Link>
+              <Link to="/">Home</Link>
             </li>
             <li className="p-3 font-bold hover:bg-gray-700 transition-color duration-200">
               <Link to="/library">Library</Link>
@@ -65,7 +65,7 @@ const Header = () => {
         className={`md:hidden ${active && "invisible"}`}
         onClick={showMobile}
       >
-        <GiHamburgerMenu size={70} color="white" className="p-1 mx-3" />
+        <GiHamburgerMenu size={70} color="white" className="p-1 mx-3 cursor-pointer" />
       </button>
 
       {active && <MobileMenu showMobile={showMobile} />}
