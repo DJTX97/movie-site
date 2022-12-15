@@ -24,21 +24,6 @@ const MobileMenu = ({ showMobile }) => {
     // showMobile()
   };
 
-  // const handleTouchHome = () => {
-  //   touchHome()
-  //   showMobile()
-  // }
-
-  // const handleTouchLibrary = () => {
-  //   touchLibrary()
-  //   showMobile()
-  // }
-
-  // const handleTouchContact = () => {
-  //   touchContact()
-  //   showMobile()
-  // }
-
   useEffect(() => {
     const interval = setInterval(() => {
       touchedHome === true && setTouchedHome(false);
@@ -82,7 +67,8 @@ const MobileMenu = ({ showMobile }) => {
                 touchedHome === true && "bg-red-800"
               }`}
               to="/"
-              onClick={touchHome}
+              // onClick={touchHome}
+              onTouchStart={touchHome}
             >
               Home
             </Link>
@@ -98,7 +84,8 @@ const MobileMenu = ({ showMobile }) => {
                 touchedLibrary === true && "bg-red-800"
               }`}
               to="/library"
-              onClick={touchLibrary}
+              // onClick={touchLibrary}
+              onTouchStart={touchLibrary}
             >
               Library
             </Link>
@@ -114,7 +101,8 @@ const MobileMenu = ({ showMobile }) => {
                 touchedContact === true && "bg-red-800"
               }`}
               to="/contact"
-              onClick={touchContact}
+              // onClick={touchContact}
+              onTouchStart={touchContact}
             >
               Contact
             </Link>
