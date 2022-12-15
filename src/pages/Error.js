@@ -15,7 +15,7 @@ const Error = () => {
   const goBack = useNavigate();
 
   const handleClick = () => {
-    goBack("library");
+    goBack("/library");
   };
 
   return (

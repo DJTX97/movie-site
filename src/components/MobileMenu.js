@@ -30,7 +30,7 @@ const MobileMenu = ({ showMobile }) => {
             className={`p-3 hover:bg-red-800`}
             // onTouchStart={handleTouch}
           >
-            <Link to="/">Home</Link>
+            <Link to="/home">Home</Link>
           </li>
           <li className="p-3 hover:bg-red-800">
             <Link to="/library">Library</Link>
