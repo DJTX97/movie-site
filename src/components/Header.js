@@ -1,11 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/images/logo.png";
+
 import { GiHamburgerMenu } from "react-icons/gi";
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
+
+import logo from "../assets/images/logo.png";
 import SearchBar from "./SearchBar";
 import MobileMenu from "./MobileMenu";
 import NormalMenu from "./NormalMenu";
+
 
 const Header = () => {
   // 'active' is the mobile menu state and 'isMobile' is the screen size state ('isMobile' is not mandatory.).
@@ -34,6 +37,9 @@ const Header = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  
+  
 
   // z-index forces element to appear in front of others with lower index than themselves (issue with cards popping over sticky header)
   return (

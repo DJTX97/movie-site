@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect} from "react";
 
-const MobileMenu = ({ showMobile }) => {
+
+
+const MobileMenu = ({ showMobile }, { active }) => {
   const [touchedHome, setTouchedHome] = useState(false);
   const [touchedLibrary, setTouchedLibrary] = useState(false);
   const [touchedContact, setTouchedContact] = useState(false);
@@ -46,6 +47,8 @@ const MobileMenu = ({ showMobile }) => {
   //   touchedContact === true && setTouchedContact(false);
   // }, [touchedHome, touchedLibrary, touchedContact]);
 
+  
+
   return (
     <div
       className={`flex flex-col items-center fixed top-0 right-0 h-screen md:hidden bg-black/50`}
@@ -68,7 +71,9 @@ const MobileMenu = ({ showMobile }) => {
               }`}
               to="/"
               // onClick={touchHome}
+              
               onTouchStart={touchHome}
+              onClick={showMobile}
             >
               Home
             </Link>
@@ -86,6 +91,7 @@ const MobileMenu = ({ showMobile }) => {
               to="/library"
               // onClick={touchLibrary}
               onTouchStart={touchLibrary}
+              onClick={showMobile}
             >
               Library
             </Link>
@@ -103,6 +109,7 @@ const MobileMenu = ({ showMobile }) => {
               to="/contact"
               // onClick={touchContact}
               onTouchStart={touchContact}
+              onClick={showMobile}
             >
               Contact
             </Link>
