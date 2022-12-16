@@ -11,21 +11,27 @@ const Contact = () => {
     // console.log(content)
 
     // Prevents page refresh to avoid losing state data.
-    e.preventDefault() 
+    e.preventDefault();
 
     confirm("confirmation", {
       state: content,
     });
   };
 
+  const [touchedSubmit, setTouchedSubmit] = useState(false);
+
+  const touchSubmit = () => {
+    setTouchedSubmit(!touchedSubmit);
+  };
+
   return (
     <div className="flex flex-col bg-banner bg-cover bg-center bg-fixed bg-no-repeat justify-center items-center">
-      <div className="rounded-xl w-5/6 bg-black shadow-lg shadow-red-600 mt-20 p-5 text-white text-5xl md:text-7xl text-center">
-        Help us improve your experience!
+      <div className="rounded-xl w-5/6 bg-black shadow-lg shadow-red-600 mt-20 py-5 text-white text-5xl md:text-7xl text-center">
+        Give us your feedback!
       </div>
 
       <form
-        className="flex flex-col space-y-10 w-3/4 mt-24 text-white text-4xl mb-36"
+        className="flex flex-col space-y-10 w-3/4 mt-20 text-white text-4xl mb-36"
         onSubmit={handleSubmit}
       >
         <div className="flex flex-col">
@@ -65,7 +71,7 @@ const Contact = () => {
             onChange={(e) =>
               setContent({ ...content, message: e.target.value })
             }
-            className="rounded-md h-80 p-3 pl-2 m-3 ml-1 text-xl outline-none border-none text-black"
+            className="rounded-md h-40 p-3 pl-2 m-3 ml-1 text-xl outline-none border-none text-black"
           ></textarea>
         </div>
 
@@ -73,7 +79,10 @@ const Contact = () => {
           <input
             type="submit"
             value="Submit"
-            className="w-52 rounded-xl bg-black shadow-lg p-5 hover:bg-gray-700 transition-color duration-200 cursor-pointer"
+            onTouchStart={touchSubmit}
+            className={`w-52 rounded-xl bg-black shadow-lg shadow-red-600 p-5 hover:bg-gray-700 transition-color duration-200 cursor-pointer ${
+              touchedSubmit && "bg-gray-700"
+            }`}
           />
         </div>
       </form>

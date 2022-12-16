@@ -1,14 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import { GiHamburgerMenu } from "react-icons/gi";
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 
 import logo from "../assets/images/logo.png";
 import SearchBar from "./SearchBar";
 import MobileMenu from "./MobileMenu";
 import NormalMenu from "./NormalMenu";
-
 
 const Header = () => {
   // 'active' is the mobile menu state and 'isMobile' is the screen size state ('isMobile' is not mandatory.).
@@ -38,9 +36,6 @@ const Header = () => {
     };
   }, []);
 
-  
-  
-
   // z-index forces element to appear in front of others with lower index than themselves (issue with cards popping over sticky header)
   return (
     <div className="flex sticky top-0 bg-black text-white text-2xl shadow-lg shadow-red-600 z-[1] justify-between">
@@ -55,7 +50,7 @@ const Header = () => {
         <SearchBar />
       </div>
 
-      {/* Hidding hamburger menu when opening the mobile menu is necessary to avoid visual overlap glitches. */}
+      {/* Hidding hamburger menu when opening the mobile menu is necessary to avoid visual overlap. */}
       <button
         className={`md:hidden ${active && "invisible"}`}
         onClick={showMobile}
@@ -67,7 +62,7 @@ const Header = () => {
         />
       </button>
 
-      {active && <MobileMenu showMobile={showMobile} active={active} />}
+      {active && <MobileMenu showMobile={showMobile} />}
     </div>
   );
 };

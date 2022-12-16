@@ -1,28 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 
-
-
-const MobileMenu = ({ showMobile }, { active }) => {
+const MobileMenu = ({ showMobile }) => {
   const [touchedHome, setTouchedHome] = useState(false);
   const [touchedLibrary, setTouchedLibrary] = useState(false);
   const [touchedContact, setTouchedContact] = useState(false);
 
   const touchHome = () => {
     setTouchedHome(!touchedHome);
-    // showMobile()
   };
 
   const touchLibrary = () => {
     setTouchedLibrary(!touchedLibrary);
-    // showMobile()
   };
 
   const touchContact = () => {
     setTouchedContact(!touchedContact);
-    // showMobile()
   };
 
   useEffect(() => {
@@ -34,20 +29,8 @@ const MobileMenu = ({ showMobile }, { active }) => {
 
     return () => {
       clearInterval(interval);
-
-      // console.log(
-      //   `Home: ${touchedHome}, Library: ${touchedLibrary}, Contact: ${touchedContact}`
-      // );
     };
   }, [touchedHome, touchedLibrary, touchedContact]);
-
-  // useEffect(() => {
-  //   touchedHome === true && setTouchedHome(false);
-  //   touchedLibrary === true && setTouchedLibrary(false);
-  //   touchedContact === true && setTouchedContact(false);
-  // }, [touchedHome, touchedLibrary, touchedContact]);
-
-  
 
   return (
     <div
@@ -59,55 +42,36 @@ const MobileMenu = ({ showMobile }, { active }) => {
         </button>
 
         <ul className="flex flex-col gap-3 w-full text-white text-xl uppercase items-center">
-          <li
-            className="w-full flex text-center"
-            // onClick={showMobile}
-            // onTouchStart={touchHome}
-            // onTouchEnd={showMobile}
-          >
+          <li className="w-full flex text-center">
             <Link
               className={`w-full py-4 hover:bg-red-800 ${
                 touchedHome === true && "bg-red-800"
               }`}
               to="/"
-              // onClick={touchHome}
-              
               onTouchStart={touchHome}
               onClick={showMobile}
             >
               Home
             </Link>
           </li>
-          <li
-            className="w-full flex text-center"
-            // onClick={showMobile}
-            // onTouchStart={touchLibrary}
-            // onTouchEnd={showMobile}
-          >
+          <li className="w-full flex text-center">
             <Link
               className={`w-full py-4 hover:bg-red-800 ${
                 touchedLibrary === true && "bg-red-800"
               }`}
               to="/library"
-              // onClick={touchLibrary}
               onTouchStart={touchLibrary}
               onClick={showMobile}
             >
               Library
             </Link>
           </li>
-          <li
-            className="w-full flex text-center"
-            // onClick={showMobile}
-            // onTouchStart={touchContact}
-            // onTouchEnd={showMobile}
-          >
+          <li className="w-full flex text-center">
             <Link
               className={`w-full py-4 hover:bg-red-800 ${
                 touchedContact === true && "bg-red-800"
               }`}
               to="/contact"
-              // onClick={touchContact}
               onTouchStart={touchContact}
               onClick={showMobile}
             >
