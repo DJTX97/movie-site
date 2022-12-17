@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import logo from "../assets/images/logo.png";
 import SearchBar from "./SearchBar";
@@ -36,6 +36,24 @@ const Header = () => {
     };
   }, []);
 
+  // This closes mobile menu when clicking on the screen:
+  // 1. Define ref.
+  // 2. Add ref to hamburger button.
+  // 3. Define 'hide' function to check the click event and hide the menu.
+  // 4. Bind the 'hide' function to an event listener inside a useEffect.
+  const ref = useRef(null);
+
+  const hide = (e) => {
+    if (!ref.current.contains(e.target)) {
+      setActive(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", hide);
+    return document.removeEventListener("click", hide);
+  }, []);
+
   // z-index forces element to appear in front of others with lower index than themselves (issue with cards popping over sticky header)
   return (
     <div className="flex sticky top-0 bg-black text-white text-2xl shadow-lg shadow-red-600 z-[1] justify-between">
@@ -54,6 +72,7 @@ const Header = () => {
       <button
         className={`md:hidden ${active && "invisible"}`}
         onClick={showMobile}
+        ref={ref}
       >
         <GiHamburgerMenu
           size={70}
