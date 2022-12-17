@@ -45,7 +45,7 @@ const MobileMenu = ({ showMobile }) => {
           <li className="w-full flex text-center">
             <Link
               className={`w-full py-4 hover:bg-red-800 ${
-                touchedHome === true && "bg-red-800"
+                touchedHome && "bg-red-800"
               }`}
               to="/"
               onTouchStart={touchHome}
@@ -57,7 +57,7 @@ const MobileMenu = ({ showMobile }) => {
           <li className="w-full flex text-center">
             <Link
               className={`w-full py-4 hover:bg-red-800 ${
-                touchedLibrary === true && "bg-red-800"
+                touchedLibrary && "bg-red-800"
               }`}
               to="/library"
               onTouchStart={touchLibrary}
@@ -69,7 +69,7 @@ const MobileMenu = ({ showMobile }) => {
           <li className="w-full flex text-center">
             <Link
               className={`w-full py-4 hover:bg-red-800 ${
-                touchedContact === true && "bg-red-800"
+                touchedContact && "bg-red-800"
               }`}
               to="/contact"
               onTouchStart={touchContact}
