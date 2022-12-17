@@ -53,13 +53,7 @@ const SearchBar = () => {
   // Autofocus input functionality: define 'ref' for input field and add onClick event in selection divs.
   const inputRef = useRef(null);
 
-  // clears input field when clicked
-  const clearInput = (e) => {
-    setValue("");
-    // console.log(!movieList.includes(value));
-    // console.log(e.target.select() === false)
-  };
-
+  // Button bg change onTouch.
   const [touchedSearch, setTouchedSearch] = useState(false);
 
   const touchSearch = () => {
@@ -68,13 +62,28 @@ const SearchBar = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      touchedSearch === true && setTouchedSearch(false);
+      touchedSearch && setTouchedSearch(false);
     }, 200);
-
     return () => {
       clearInterval(interval);
     };
   }, [touchedSearch]);
+
+  // const [touchedOption, setTouchedOption] = useState(false);
+
+  // const touchOption = () => {
+  //   setTouchedOption(!touchedOption);
+  // };
+
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     touchedOption === true && setTouchedOption(false);
+  //   }, 200);
+
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // }, [touchedOption]);
 
   return (
     <>
@@ -93,9 +102,7 @@ const SearchBar = () => {
           placeholder="Search..."
           value={value}
           onChange={handleChange}
-          onClick={(e) => {
-            clearInput(e);
-          }}
+          onClick={() => value !== "" && setValue("")}
           onKeyDown={(e) => {
             e.key === "Enter" && seeResult();
           }}
@@ -122,19 +129,20 @@ const SearchBar = () => {
               searchTerm && name.startsWith(searchTerm) && name !== searchTerm
             );
           })
-          .slice(0, 10)
           .map((movie) => (
             <div
-              className="w-48 rounded-lg border md:border-none pl-2 py-2 md:py-1 hover:bg-gray-300 cursor-pointer"
+              className={`w-48 rounded-lg border md:border-none pl-2 py-2 md:py-1 hover:bg-gray-300 cursor-pointer`}
               key={movie.id}
               onClick={() => {
                 getSearch(movie.title);
                 inputRef.current.focus();
               }}
+              // onTouchStart={touchOption}
             >
               {movie.title}
             </div>
-          ))}
+          ))
+          .slice(0, 5)}
       </div>
     </>
   );
