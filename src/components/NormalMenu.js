@@ -20,9 +20,9 @@ const NormalMenu = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      touchedHome === true && setTouchedHome(false);
-      touchedLibrary === true && setTouchedLibrary(false);
-      touchedContact === true && setTouchedContact(false);
+      touchedHome && setTouchedHome(false);
+      touchedLibrary && setTouchedLibrary(false);
+      touchedContact && setTouchedContact(false);
     }, 200);
 
     return () => {

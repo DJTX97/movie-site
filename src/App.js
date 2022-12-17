@@ -20,8 +20,6 @@ const Home = React.lazy(() => import("./pages/Home"));
 const Library = React.lazy(() => import("./pages/Library"));
 const Movie = React.lazy(() => import("./pages/Movie"));
 const SubmitConfirm = React.lazy(() => import("./pages/SubmitConfirm"));
-// import { useSnapshot } from "valtio";
-// import { movieSelection } from "./state/state";
 
 function App() {
   // Importing the data here is necessary to also pass it to the search bar located in the header (data flow: parent->child).
@@ -29,8 +27,8 @@ function App() {
   return (
     <div>
       <Header />
-      <Suspense fallback={<Loader />}>
-        <ScrollToTop>
+      <ScrollToTop>
+        <Suspense fallback={<Loader />}>
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route path="/library" element={<Library />} />
@@ -38,10 +36,10 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/contact/confirmation" element={<SubmitConfirm />} />
             <Route path="/error" element={<Error />} />
-            <Route path="/loader" element={<Loader />} /> 
+            {/* <Route path="/loader" element={<Loader />} /> */}
           </Routes>
-        </ScrollToTop>
-      </Suspense>
+        </Suspense>
+      </ScrollToTop>
     </div>
   );
 }

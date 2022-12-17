@@ -1,8 +1,7 @@
-import React, {useEffect} from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Error = () => {
-
   useEffect(() => {
     document.body.className !== "overflow-hidden" &&
       document.body.classList.add("overflow-hidden");
@@ -11,6 +10,21 @@ const Error = () => {
       document.body.className = "";
     };
   }, []);
+
+  const [touchedBack, setTouchedBack] = useState(false);
+
+  const touchBack = () => {
+    setTouchedBack(!touchedBack);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      touchedBack && setTouchedBack(false);
+    }, 200);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [touchedBack]);
 
   const goBack = useNavigate();
 
@@ -24,8 +38,9 @@ const Error = () => {
         Oops! Something went wrong!
       </div>
       <button
-        className="w-52 rounded-xl bg-black shadow-lg shadow-red-600 p-5 hover:bg-gray-700 text-4xl cursor-pointer"
+        className={`w-52 rounded-xl bg-black shadow-lg shadow-red-600 p-5 hover:bg-gray-700 text-4xl cursor-pointer ${touchedBack && "bg-gray-700"}`}
         onClick={handleClick}
+        onTouchStart={touchBack}
       >
         Go back
       </button>

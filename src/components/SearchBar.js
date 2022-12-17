@@ -142,7 +142,7 @@ const SearchBar = () => {
               {movie.title}
             </div>
           ))
-          .slice(0, 5)}
+          .slice(0, 10)}
       </div>
     </>
   );
