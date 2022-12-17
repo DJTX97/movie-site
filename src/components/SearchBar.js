@@ -1,13 +1,9 @@
 import React from "react";
 import { GrSearch } from "react-icons/gr";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
-// import { movies } from "../state/state";
-// import { useSnapshot } from "valtio";
-// import { movieSelection } from "../state/state";
 import data from "../data/data.json";
-// import { useEffect } from "react";
 
 const SearchBar = () => {
   // 'movies' object
@@ -60,21 +56,37 @@ const SearchBar = () => {
   // clears input field when clicked
   const clearInput = (e) => {
     setValue("");
-
     // console.log(!movieList.includes(value));
     // console.log(e.target.select() === false)
   };
 
-  
+  const [touchedSearch, setTouchedSearch] = useState(false);
+
+  const touchSearch = () => {
+    setTouchedSearch(!touchedSearch);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      touchedSearch === true && setTouchedSearch(false);
+    }, 200);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [touchedSearch]);
 
   return (
     <>
       <div className="flex md:pr-10">
         <button
           type="button"
-          className="bg-white rounded-l-3xl pr-2 my-5 hover:bg-gray-300"
+          className={`bg-white rounded-l-3xl pr-2 my-5 hover:bg-gray-300 ${
+            touchedSearch && "bg-gray-300"
+          }`}
+          onTouchStart={touchSearch}
         >
-          {<GrSearch className="ml-3" size={20} onClick={seeResult} />}
+          <GrSearch className="ml-3" size={20} onClick={seeResult} />
         </button>
         <input
           type="text"
