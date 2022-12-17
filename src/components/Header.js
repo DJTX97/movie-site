@@ -51,7 +51,9 @@ const Header = () => {
 
   useEffect(() => {
     document.addEventListener("click", hide);
-    return document.removeEventListener("click", hide);
+    return (
+      document.removeEventListener("click", hide)
+      );
   }, []);
 
   // z-index forces element to appear in front of others with lower index than themselves (issue with cards popping over sticky header)
