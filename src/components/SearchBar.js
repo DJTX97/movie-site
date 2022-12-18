@@ -31,7 +31,7 @@ const SearchBar = () => {
             genres: selection[0].genres.join(", "),
           },
         })
-      : search("/error");
+      : search("*");
 
     setValue("");
   };

@@ -31,11 +31,11 @@ function App() {
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route exact path="/" element={<Home />} />
-            <Route path="/library" element={<Library />} />
-            <Route path="/library/movie" element={<Movie />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/contact/confirmation" element={<SubmitConfirm />} />
-            <Route path="/error" element={<Error />} />
+            <Route path="library" element={<Library />} />
+            <Route path="library/movie" element={<Movie />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="contact/confirmation" element={<SubmitConfirm />} />
+            <Route path="*" element={<Error />} />
             {/* <Route path="/loader" element={<Loader />} /> */}
           </Routes>
         </Suspense>
